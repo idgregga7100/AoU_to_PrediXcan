@@ -1,0 +1,19 @@
+#!/bin/bash
+#example to run spredixcan with aou height gwas sumstats
+
+files=chrpos-GWAS_AoU_testing_*_scaled_ht.sumstats.txt
+
+for f in $files
+do
+/usr/local/bin/MetaXcan_software/SPrediXcan.py \
+--model_db_path /home/daniel/mashr/final_models/PBMC_AFA_EN_baseline.db \
+--covariance /home/daniel/mashr/final_models/PBMC_AFA_EN_baseline_covariances.txt.gz \
+--gwas_file $f \
+--snp_column chrpos \
+--effect_allele_column A2 \
+--non_effect_allele_column A1 \
+--beta_column BETA \
+--se_column SE \
+--output_file PBMC-AFA-EN-$f \
+--keep_non_rsid
+done
