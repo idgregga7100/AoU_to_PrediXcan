@@ -1,0 +1,6 @@
+#print aou bucket string on aou VM:
+echo $WORKSPACE_BUCKET
+
+#on wl3, after setting up google bucket connection:
+gsutil -m cp /home/isabelle/model_snps/predixcan_models_varids-effallele.txt  gs://fc-secure-e659d40c-61b8-4bef-9728-5c017d2a3453/data/
+
