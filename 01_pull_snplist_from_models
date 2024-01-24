@@ -1,0 +1,13 @@
+#!/bin/bash
+#example of pulling snps from models on wl3
+#directory: /home/isabelle/model_snps
+#use sqlite3 command for db files; pulls weights table from model db file, just most convenient table to pull
+#gene,rsid,varID,ref_allele,eff_allele,weight
+
+models=/home/isabelle/topmed/proteome/ryan_models/*.db
+
+for model in ${models}
+do
+  echo ${model}
+  sqlite3 -header -csv ${model} 'select * from weights;' > PWAS_snps-${model:59:(-3)}.csv
+done
